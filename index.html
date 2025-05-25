@@ -24,17 +24,6 @@
             position: relative;
         }
 
-
-       <audio autoplay loop muted hidden>
-       <source src="
-<audio autoplay loop muted hidden>
-  <source src="urlie.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-
-
-
         /* Enhanced background ramen emojis with rotation */
         .background-ramen {
             position: fixed;
@@ -228,10 +217,6 @@
             0%, 100% { transform: translateY(0px) translateX(0px); }
             25% { transform: translateY(-5px) translateX(5px); }
             75% { transform: translateY(-5px) translateX(-5px); }
-        }
-
-        .hidden-audio {
-            display: none;
         }
 
         .section {
@@ -713,6 +698,12 @@
     </style>
 </head>
 <body>
+    <!-- Hidden Audio -->
+    <audio id="backgroundMusic" autoplay loop muted hidden>
+        <source src="urlie.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- Enhanced background ramen emojis -->
     <div class="background-ramen" style="left: 5%; animation-delay: 0s;">🍜</div>
     <div class="background-ramen" style="left: 15%; animation-delay: 2s;">🍜</div>
@@ -750,15 +741,10 @@
     <!-- Cursor follower -->
     <div class="cursor-lizard" id="cursorLizard">🦎</div>
 
-    <!-- Hidden Audio -->
-    <audio class="hidden-audio" autoplay loop>
-        <source src="apocalypse-cas.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- Hero Section -->
     <section class="hero-section">
         <h1 class="typewriter-text">When Engineer🚩 met Tktk🦎</h1>
-        <p class="subtitle">A story written in late-night messages and shared dreams</p>
+        <p class="subtitle">A story written in late night insta chats</p>
     </section>
 
     <!-- Chat Timeline -->
@@ -766,7 +752,7 @@
         <h2>Late Night Conversations</h2>
         <div class="chat-container">
             <div class="chat-bubble prakriti">
-                <p>I LOVE TO EAT and i HATE sharing my food</p>
+                <p>I LOVE TO EAT and I HATE sharing my food</p>
                 <div class="timestamp">26 May 2024, 04:00</div>
             </div>
             <div class="chat-bubble mayank">
@@ -804,7 +790,7 @@
             <div class="food-item" onclick="showFoodStory('paratha')">
                 <div class="food-emoji">🥙</div>
                 <h3>Aloo Paratha Dreams</h3>
-                <p>The dish that made her want your mom's number</p>
+                <p>This dish made YOU want my mom's number</p>
             </div>
             <div class="food-item" onclick="showFoodStory('nutella')">
                 <div class="food-emoji">🍫</div>
@@ -814,7 +800,7 @@
             <div class="food-item" onclick="showFoodStory('tea')">
                 <div class="food-emoji">☕</div>
                 <h3>DosTea Memories</h3>
-                <p>Where coffee became tea, and strangers became something more</p>
+                <p>Where coffee became tea, and we became something more</p>
             </div>
         </div>
     </section>
@@ -826,25 +812,25 @@
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <h3>The Switch</h3>
-                    <p>At DosTea shop in Hyderabad, an Engineer🚩 started drinking tea instead of coffee, unknowingly falling for someone he hadn't even met yet.</p>
+                    <p>At DosTea in Hyderabad, an Engineer🚩 started drinking tea instead of coffee, unknowingly falling for someone I hadn't even met yet.</p>
                 </div>
             </div>
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <h3>First Contact</h3>
-                    <p>Instagram brought two souls together - one who loves ramen more than life, and one whose Bengali friends taught him the art of good food.</p>
+                    <p>Instagram brought two souls together - one Bengali girl who loves ramen more than life, and one Bihari boy who just loves seeing the Bengali girl eating RAMEN.</p>
                 </div>
             </div>
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <h3>1:00 AM - 4:00 AM</h3>
-                    <p>The conversation that changed everything. Food confessions, family stories, and the realization that some people are worth staying up until 4:00 AM for.</p>
+                    <p>The conversation that changed everything. Food confessions, family stories and the realization that some people are worth staying up until 4:00 AM for.</p>
                 </div>
             </div>
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <h3>To Be Continued...</h3>
-                    <p>This is just the beginning of a story written in late-night messages and shared dreams.</p>
+                    <p>This was the beginning of our story.</p>
                 </div>
             </div>
         </div>
@@ -911,10 +897,10 @@
         // Food story popup
         function showFoodStory(food) {
             const stories = {
-                ramen: "ur ramen addiction is legendary. 'I eat ramen so much mera staple ban chuka hai' - she once said she might die from it and nobody would even know!",
-                paratha: "The moment that melted hearts: 'Aunty ka number bhejo' - when aloo paratha with ghee made her want to connect with your family.",
-                nutella: "Sweet conversations and even sweeter confessions, Nutella became a symbol of the sweetness you both found in each other.",
-                tea: "At DosTea shop in Hyderabad, coffee became tea, and a simple preference change marked the beginning of falling for someone special."
+                ramen: "ur ramen addiction is legendary. 'I eat ramen so much mera staple ban chuka hai' - U once said u might die from it and nobody would even know!",
+                paratha: "Aunty ka number bhejo - aloo paratha made u want to connect with my family? tabse plan tha kya mummy ko dost banane ka???",
+                nutella: "Sweet conversations and even sweeter confessions, Nutella became a symbol of the sweetness we both found in each other.",
+                tea: "At DosTea shop in Hyderabad, coffee became tea and a simple preference change marked the beginning of falling for youuu."
             };
             
             alert(stories[food]);
@@ -979,10 +965,11 @@
             }, 2000);
         });
 
-        // Auto-play audio with user interaction
+        // Auto-play audio with user interaction (browsers require user interaction for audio)
         document.addEventListener('click', function() {
-            const audio = document.querySelector('audio');
+            const audio = document.getElementById('backgroundMusic');
             if (audio && audio.paused) {
+                audio.muted = false; // Unmute after user interaction
                 audio.play().catch(e => console.log('Audio play failed:', e));
             }
         }, { once: true });
